@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>vue-color</title>
   <script src="https://unpkg.com/vue@next"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
-  <script src="../dist/vue-color.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@ckpack/vue-color@0.0.2/dist/vue-color.min.js"></script>
 </head>
 <style>
   html,body,#app{
@@ -16,18 +15,23 @@
     margin: 0;
     padding: 0;
   }
+  .color-wrapper > div {
+    margin: 24px 0;
+  }
 </style>
 <body>
   <div id="app">
-    <Chrome v-model="colors"/>
-    <Compact v-model="colors"/>
-    <Grayscale v-model="colors"/>
-    <Material v-model="colors"/>
-    <Photoshop v-model="colors"/>
-    <Sketch v-model="colors"/>
-    <Slider v-model="colors"/>
-    <Swatches v-model="colors"/>
-    <Twitter v-model="colors"/>
+    <div class="color-wrapper" :style="{'background-color': typeof colors === 'object' ? colors.hex8 : colors}">
+      <Chrome v-model="colors"></Chrome>
+      <Compact v-model="colors"></Compact>
+      <Grayscale v-model="colors"></Grayscale>
+      <Material v-model="colors"></Material>
+      <Photoshop v-model="colors"></Photoshop>
+      <Sketch v-model="colors"></Sketch>
+      <Slider v-model="colors"></Slider>
+      <Swatches v-model="colors"></Swatches>
+      <Twitter v-model="colors"></Twitter>
+    </div>
   </div>
 </body>
 <script>
@@ -37,14 +41,6 @@
         colors: '#194D33A8',
       }
     },
-    watch: {
-      colors: {
-        immediate: true,
-        handler(curColor){
-          document.querySelector('#app').style.backgroundColor = typeof curColor === 'object' ? curColor.hex8 : curColor;
-        }
-      }
-    }
   });
   app.use(VueColor);
   app.mount('#app')
