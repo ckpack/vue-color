@@ -8,43 +8,62 @@
 
 ## [Demo](https://ckpack.github.io/vue-color)
 
-## Example
-```js
-<Sketch v-model="colors"/>
+## [CHANGELOG](/CHANGELOG.md)
 
+## Use case
+
+#### Fully import
+
+```js
+import { createApp } from 'vue';
+import App from '@/App.vue';
+import VueColor from '@ckpack/vue-color';
+
+const app = createApp(App);
+
+app.use(VueColor);
+app.mount('#app');
+```
+#### On demand
+
+We can import components we actually need, making the project smaller than otherwise.
+
+##### Import Directly
+
+```html
+<template>
+  <Sketch v-model="colors"/>
+</template>
+<script>
 import { Sketch } from '@ckpack/vue-color';
 
-let colors = {
-  hex: '#194d33',
-  hex8: '#194D33A8',
-  hsl: { h: 150, s: 0.5, l: 0.2, a: 1 },
-  hsv: { h: 150, s: 0.66, v: 0.30, a: 1 },
-  rgba: { r: 25, g: 77, b: 51, a: 1 },
-  a: 1
-};
-// or
-let colors = '#194d33';
-// or
-let colors = '#194D33A8';
-// or 
-let colors = { h: 150, s: 0.66, v: 0.30 };
-// or 
-let colors = { r: 255, g: 0, b: 0 };
-// etc...
-
-new Vue({
+export default {
   components: {
     Sketch,
   },
-  data () {
+  setup() {
     return {
-      colors,
-    };
-  },
-});
+      colors: '#194D33A8' // etc: { h: 150, s: 0.66, v: 0.30 }, { r: 255, g: 0, b: 0 }, '#194d33'
+    }
+  }
+}
+</script>
 ```
 
-## [CHANGELOG](/CHANGELOG.md)
+##### Install on Demand Globally
+
+```js
+import { createApp } from 'vue';
+import App from '@/App.vue';
+import { Sketch, create } from '@ckpack/vue-color';
+
+const app = createApp(App);
+app.use(create({
+  components: [Sketch],
+}));
+app.mount('#app');
+```
+
 ## License
 
 vue-color is licensed under [The MIT License](LICENSE).
