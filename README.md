@@ -43,6 +43,8 @@ new Vue({
   },
 });
 ```
+
+## [CHANGELOG](/CHANGELOG.md)
 ## License
 
 vue-color is licensed under [The MIT License](LICENSE).

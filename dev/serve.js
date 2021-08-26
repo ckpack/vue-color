@@ -1,10 +1,14 @@
 import { createApp } from 'vue';
+
+// import VueColor from '../libs';
+import { Sketch, create } from '../libs';
+
 import Dev from './serve.vue';
-// To register individual components where they are used (serve.vue) instead of using the
-// library as a whole, comment/remove this import and it's corresponding "app.use" call
-import VueColor from '@/entry.esm';
 
 const app = createApp(Dev);
-app.use(VueColor);
+// app.use(VueColor);
+app.use(create({
+  components: [Sketch],
+}));
 
 app.mount('#app');
