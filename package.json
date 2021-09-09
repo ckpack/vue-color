@@ -33,8 +33,8 @@
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^13.1.0",
     "@rollup/plugin-alias": "^3.1.5",
-    "@rollup/plugin-node-resolve": "^13.0.4",
     "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
     "@vue/cli-service": "^4.5.13",
     "@vue/compiler-sfc": "^3.2.6",
     "@vue/eslint-config-airbnb": "^5.3.0",
@@ -42,6 +42,7 @@
     "eslint-plugin-vue": "^7.16.0",
     "glob": "^7.1.7",
     "husky": "^6.0.0",
+    "lint-staged": "^11.1.2",
     "postcss": "^8.3.6",
     "postcss-prefixer": "^2.1.3",
     "rollup": "^2.52.7",
@@ -62,5 +63,10 @@
   },
   "engines": {
     "node": ">=12"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue}": [
+      "eslint --fix"
+    ]
   }
 }
