@@ -1,14 +1,10 @@
 import { createApp } from 'vue';
 
-// import VueColor from '../libs';
-import { Sketch, create } from '../libs';
+import VueColor from '../src';
 
 import Dev from './serve.vue';
 
 const app = createApp(Dev);
-// app.use(VueColor);
-app.use(create({
-  components: [Sketch],
-}));
+app.use(VueColor);
 
 app.mount('#app');
