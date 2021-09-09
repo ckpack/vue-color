@@ -2,7 +2,7 @@ import create from '@/create';
 import { components } from '@/components';
 
 const preset = create({
-  components
+  components,
 });
 
 export default preset;
