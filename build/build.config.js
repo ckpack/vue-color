@@ -10,6 +10,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import prefixer from 'postcss-prefixer';
 
 import { name, cssPrefix } from '../src/defaultConfig';
+import { dependencies } from '../package.json';
 
 const projectRoot = path.resolve(__dirname, '../src');
 const globals = {
@@ -62,7 +63,10 @@ const output = {
   globals,
 };
 
-const external = ['vue'];
+const external = {
+  vue: ['vue'],
+  dependencies: Object.keys(dependencies),
+};
 
 export {
   projectRoot,

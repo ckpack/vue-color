@@ -40,7 +40,7 @@
     "@vue/cli-service": "^4.5.13",
     "@vue/compiler-sfc": "^3.2.20",
     "@vue/eslint-config-airbnb": "^5.3.0",
-    "eslint": "^8.0.1",
+    "eslint": "^7.32.0",
     "eslint-plugin-vue": "^7.19.1",
     "glob": "^7.2.0",
     "husky": "^7.0.2",
