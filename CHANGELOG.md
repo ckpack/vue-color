@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/ckpack/vue-color/compare/v1.1.0...v1.1.1) (2021-10-14)
+
+
+### Bug Fixes
+
+* excluded dependencies module when build libs ([6b0d860](https://github.com/ckpack/vue-color/commit/6b0d860c2b2f6d07f31c195b4a93c1e7a58fc941))
+* update dev serve.js ([915233d](https://github.com/ckpack/vue-color/commit/915233dc2c6602aac00d7acbf4142dfb2b2f9112))
+
 ## [1.1.0](https://github.com/ckpack/vue-color/compare/v1.0.1...v1.1.0) (2021-09-09)
 
 
