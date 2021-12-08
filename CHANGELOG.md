@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.5](https://github.com/ckpack/vue-color/compare/v1.1.4...v1.1.5) (2021-12-08)
+
+
+### Bug Fixes
+
+* esm result exclude vue module ([d61b120](https://github.com/ckpack/vue-color/commit/d61b120542fbf531b22a73dbfe814b99bc4ad828))
+* **hue:** emit color on mouseup just like saturation does ([9d8c798](https://github.com/ckpack/vue-color/commit/9d8c798728dfd985dac3f5ef8331adadf5de929c))
+
 ### [1.1.4](https://github.com/ckpack/vue-color/compare/v1.1.3...v1.1.4) (2021-10-21)
 
 
