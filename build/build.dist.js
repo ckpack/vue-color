@@ -23,7 +23,7 @@ export default [
       ...basePlugins,
       plugins.postcss(),
     ],
-    external,
+    external: external.vue,
   },
   {
     input,
