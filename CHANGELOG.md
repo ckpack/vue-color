@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.6](https://github.com/ckpack/vue-color/compare/v1.1.5...v1.1.6) (2022-02-14)
+
+
+### Bug Fixes
+
+* use @ctrl/tinycolor replace tinycolor2 ([09bb612](https://github.com/ckpack/vue-color/commit/09bb612c50467fda655e8b6b36c16d7b120263d6))
+
 ### [1.1.5](https://github.com/ckpack/vue-color/compare/v1.1.4...v1.1.5) (2021-12-08)
 
 
