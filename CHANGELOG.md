@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* use @ctrl/tinycolor replace tinycolor2 ([09bb612](https://github.com/ckpack/vue-color/commit/09bb612c50467fda655e8b6b36c16d7b120263d6))
+* use replace tinycolor2 with @ctrl/tinycolor ([09bb612](https://github.com/ckpack/vue-color/commit/09bb612c50467fda655e8b6b36c16d7b120263d6))
 
 ### [1.1.5](https://github.com/ckpack/vue-color/compare/v1.1.4...v1.1.5) (2021-12-08)
 
