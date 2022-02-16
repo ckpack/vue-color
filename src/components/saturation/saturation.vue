@@ -14,8 +14,7 @@
 </template>
 
 <script>
-import clamp from 'clamp';
-import throttle from 'lodash.throttle';
+import { clamp, throttle } from '@/utils/utils';
 
 export default {
   name: 'Saturation',
