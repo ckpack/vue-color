@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.7](https://github.com/ckpack/vue-color/compare/v1.1.6...v1.1.7) (2022-02-16)
+
+
+### Bug Fixes
+
+* replace CommonJS package ([6f1292f](https://github.com/ckpack/vue-color/commit/6f1292f3fe95fee68aff30e3ea45e5799247b2a1))
+
 ### [1.1.6](https://github.com/ckpack/vue-color/compare/v1.1.5...v1.1.6) (2022-02-14)
 
 
