@@ -94,7 +94,7 @@ export default {
       this.colors = _colorChange(data, oldHue || this.oldHue);
     },
     isValidHex(hex) {
-      return tinycolor(hex).isValid();
+      return tinycolor(hex).isValid;
     },
     simpleCheckForValidColor(data) {
       const keysToCheck = ['r', 'g', 'b', 'a', 'h', 's', 'l', 'v'];
