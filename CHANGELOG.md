@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.8](https://github.com/ckpack/vue-color/compare/v1.1.7...v1.1.8) (2022-02-22)
+
+
+### Bug Fixes
+
+* tinycolor(...).isValid is not a function ([7831c54](https://github.com/ckpack/vue-color/commit/7831c54654a702b587f03007a6d4539287cdb91d))
+
 ### [1.1.7](https://github.com/ckpack/vue-color/compare/v1.1.6...v1.1.7) (2022-02-16)
 
 
