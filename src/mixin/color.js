@@ -24,7 +24,7 @@ function _colorChange(data, oldHue) {
   }
 
   if (color && (color._a === undefined || color._a === null)) {
-    color.setAlpha(alpha || 1);
+    color.setAlpha(alpha || color.getAlpha());
   }
 
   const hsl = color.toHsl();
@@ -57,7 +57,7 @@ function _colorChange(data, oldHue) {
     hsv,
     oldHue: data.h || oldHue || hsl.h,
     source: data.source,
-    a: data.a || color.getAlpha(),
+    a: color.getAlpha(),
   };
 }
 

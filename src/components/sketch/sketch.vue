@@ -116,10 +116,7 @@ export default {
   },
   methods: {
     handlePreset(c) {
-      this.colorChange({
-        hex: c,
-        source: 'hex',
-      });
+      this.colorChange(c);
     },
     childChange(data) {
       this.colorChange(data);
