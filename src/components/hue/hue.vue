@@ -128,6 +128,7 @@ export default {
     handleMouseDown(e) {
       this.handleChange(e, true);
       window.addEventListener('mousemove', this.handleChange);
+      window.addEventListener('mouseup', this.handleChange);
       window.addEventListener('mouseup', this.handleMouseUp);
     },
     handleMouseUp(e) {
@@ -135,6 +136,7 @@ export default {
     },
     unbindEventListeners() {
       window.removeEventListener('mousemove', this.handleChange);
+      window.removeEventListener('mouseup', this.handleChange);
       window.removeEventListener('mouseup', this.handleMouseUp);
     },
   },

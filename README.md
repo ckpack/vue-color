@@ -8,22 +8,8 @@
 
 ## [Demo](https://ckpack.github.io/vue-color)
 
-## [CHANGELOG](/CHANGELOG.md)
-
 ## Use case
 
-#### Fully import
-
-```js
-import { createApp } from 'vue';
-import App from '@/App.vue';
-import VueColor from '@ckpack/vue-color';
-
-const app = createApp(App);
-
-app.use(VueColor);
-app.mount('#app');
-```
 #### On demand
 
 We can import components we actually need, making the project smaller than otherwise.
@@ -63,6 +49,21 @@ app.use(create({
 }));
 app.mount('#app');
 ```
+
+#### Fully import
+
+```js
+import { createApp } from 'vue';
+import App from '@/App.vue';
+import VueColor from '@ckpack/vue-color';
+
+const app = createApp(App);
+
+app.use(VueColor);
+app.mount('#app');
+```
+
+## [CHANGELOG](/CHANGELOG.md)
 
 ## License
 

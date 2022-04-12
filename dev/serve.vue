@@ -1,6 +1,6 @@
 <template>
-  <div id="app" :style="{'background-color': typeof colors === 'object' ? colors.hex8 : colors}">
-    <Sketch v-model="colors"/>
+  <div id="app" :style="{ 'background-color': typeof colors === 'object' ? colors.hex8 : colors }">
+    <Sketch v-model="colors" />
     <Chrome v-model="colors"/>
     <Compact v-model="colors"/>
     <Grayscale v-model="colors"/>
@@ -14,9 +14,15 @@
 
 <script>
 import { defineComponent } from 'vue';
+import {
+  Sketch, Chrome, Compact, Grayscale, Material, Photoshop, Slider, Swatches, Twitter,
+} from '../libs';
 
 export default defineComponent({
   name: 'ServeDev',
+  components: {
+    Sketch, Chrome, Compact, Grayscale, Material, Photoshop, Slider, Swatches, Twitter,
+  },
   data() {
     return {
       colors: '#194D33A8',
@@ -26,7 +32,7 @@ export default defineComponent({
 </script>
 
 <style>
-  #app >div {
-    margin: 30px 0;
-  }
+#app > div {
+  margin: 30px 0;
+}
 </style>

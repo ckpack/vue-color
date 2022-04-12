@@ -8,7 +8,6 @@ const basePlugins = [
   plugins.alias,
   plugins.vue,
   plugins.resolve,
-  plugins.replace,
   plugins.commonjs,
 ];
 
@@ -24,7 +23,7 @@ export default [
       ...basePlugins,
       plugins.postcss(),
     ],
-    external,
+    external: external.vue,
   },
   {
     input,
@@ -40,6 +39,6 @@ export default [
       plugins.postcss(),
       plugins.terser,
     ],
-    external,
+    external: external.vue,
   },
 ];

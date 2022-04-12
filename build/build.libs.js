@@ -11,8 +11,6 @@ const basePlugins = [
   plugins.alias,
   plugins.vue,
   plugins.resolve,
-  plugins.replace,
-  plugins.commonjs,
 ];
 
 export default [
@@ -28,6 +26,6 @@ export default [
       ...basePlugins,
       plugins.postcss(),
     ],
-    external,
+    external: [...external.vue, ...external.dependencies],
   },
 ];

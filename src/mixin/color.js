@@ -1,4 +1,8 @@
-import tinycolor from 'tinycolor2';
+import { TinyColor } from '@ctrl/tinycolor';
+
+function tinycolor(...args) {
+  return new TinyColor(...args);
+}
 
 function _colorChange(data, oldHue) {
   const alpha = data && data.a;
@@ -90,7 +94,7 @@ export default {
       this.colors = _colorChange(data, oldHue || this.oldHue);
     },
     isValidHex(hex) {
-      return tinycolor(hex).isValid();
+      return tinycolor(hex).isValid;
     },
     simpleCheckForValidColor(data) {
       const keysToCheck = ['r', 'g', 'b', 'a', 'h', 's', 'l', 'v'];
