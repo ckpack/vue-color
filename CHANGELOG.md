@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.9](https://github.com/ckpack/vue-color/compare/v1.1.8...v1.1.9) (2022-04-12)
+
+
+### Bug Fixes
+
+* sketch presetColors alpha not work ([93ec741](https://github.com/ckpack/vue-color/commit/93ec7413e6785e19b31e5c3760001cbd3e5be91c))
+
 ### [1.1.8](https://github.com/ckpack/vue-color/compare/v1.1.7...v1.1.8) (2022-02-22)
 
 
