@@ -1,6 +1,6 @@
 {
   "name": "@ckpack/vue-color",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "(vue3.0) 🎨 Vue Color Pickers for Sketch, Photoshop, Chrome & more",
   "repository": "https://github.com/ckpack/vue-color",
   "sideEffects": false,
