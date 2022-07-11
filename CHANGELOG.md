@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/ckpack/vue-color/compare/v1.1.9...v1.2.0) (2022-07-11)
+
+
+### Features
+
+* explicitly export the type as module ([5fbf273](https://github.com/ckpack/vue-color/commit/5fbf27390cb3cf7be5fedc6e8dcda3c9e9317636))
+
 ### [1.1.9](https://github.com/ckpack/vue-color/compare/v1.1.8...v1.1.9) (2022-04-12)
 
 
