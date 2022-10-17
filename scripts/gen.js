@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 function formatComponent(component) {
-  return component.split('-').map((name) => name.slice(0, 1).toUpperCase() + name.slice(1)).join('');
+  return component.split('-').map(name => name.slice(0, 1).toUpperCase() + name.slice(1)).join('');
 }
 
 const basePath = process.cwd();

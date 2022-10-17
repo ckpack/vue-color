@@ -1,23 +1,3 @@
-<template>
-  <div role="application" aria-label="Grayscale color picker" class="vc-grayscale">
-    <ul class="vc-grayscale-colors" role="listbox">
-      <li
-        v-for="c in paletteUpperCase(palette)"
-        role="option"
-        :aria-label="'Color:' + c"
-        :aria-selected="c === pick"
-        :key="c"
-        class="vc-grayscale-color-item"
-        :class="{'vc-grayscale-color-item--white': c == '#FFFFFF'}"
-        :style="{background: c}"
-        @click="handlerClick(c)"
-      >
-        <div class="vc-grayscale-dot" v-show="c === pick"></div>
-      </li>
-    </ul>
-  </div>
-</template>
-
 <script>
 import colorMixin from '@/mixin/color';
 
@@ -29,6 +9,9 @@ const defaultColors = [
 
 export default {
   name: 'Grayscale',
+  components: {
+
+  },
   mixins: [colorMixin],
   props: {
     palette: {
@@ -37,9 +20,6 @@ export default {
         return defaultColors;
       },
     },
-  },
-  components: {
-
   },
   computed: {
     pick() {
@@ -55,8 +35,27 @@ export default {
     },
   },
 };
-
 </script>
+
+<template>
+  <div role="application" aria-label="Grayscale color picker" class="vc-grayscale">
+    <ul class="vc-grayscale-colors" role="listbox">
+      <li
+        v-for="c in paletteUpperCase(palette)"
+        :key="c"
+        role="option"
+        :aria-label="`Color:${c}`"
+        :aria-selected="c === pick"
+        class="vc-grayscale-color-item"
+        :class="{ 'vc-grayscale-color-item--white': c === '#FFFFFF' }"
+        :style="{ background: c }"
+        @click="handlerClick(c)"
+      >
+        <div v-show="c === pick" class="vc-grayscale-dot" />
+      </li>
+    </ul>
+  </div>
+</template>
 
 <style>
 .vc-grayscale {
