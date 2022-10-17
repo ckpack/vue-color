@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "dev": "vue-cli-service serve dev/serve.js",
-    "build": "yarn gen:compoents && yarn build:libs && yarn build:dist",
+    "build": "npm run build:libs && npm run build:dist",
     "build:libs": "rm -rf ./libs && rollup --bundleConfigAsCjs --config ./build/build.libs.js",
     "build:dist": "rm -rf ./dist && rollup --bundleConfigAsCjs --config ./build/build.dist.js",
     "build:style": "",
