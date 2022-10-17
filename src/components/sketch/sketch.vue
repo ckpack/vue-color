@@ -1,63 +1,3 @@
-<template>
-  <div role="application" aria-label="Sketch color picker" :class="['vc-sketch', disableAlpha ? 'vc-sketch__disable-alpha' : '']">
-    <div class="vc-sketch-saturation-wrap">
-      <saturation :value="colors" @change="childChange"></saturation>
-    </div>
-    <div class="vc-sketch-controls">
-      <div class="vc-sketch-sliders">
-        <div class="vc-sketch-hue-wrap">
-          <hue :value="colors" @change="childChange"></hue>
-        </div>
-        <div class="vc-sketch-alpha-wrap" v-if="!disableAlpha">
-          <alpha :value="colors" @change="childChange"></alpha>
-        </div>
-      </div>
-      <div class="vc-sketch-color-wrap">
-        <div :aria-label="`Current color is ${activeColor}`" class="vc-sketch-active-color" :style="{background: activeColor}"></div>
-        <checkboard></checkboard>
-      </div>
-    </div>
-    <div class="vc-sketch-field" v-if="!disableFields">
-      <!-- rgba -->
-      <div class="vc-sketch-field--double">
-        <ed-in label="hex" :value="hex" @change="inputChange"></ed-in>
-      </div>
-      <div class="vc-sketch-field--single">
-        <ed-in label="r" :value="colors.rgba.r" @change="inputChange"></ed-in>
-      </div>
-      <div class="vc-sketch-field--single">
-        <ed-in label="g" :value="colors.rgba.g" @change="inputChange"></ed-in>
-      </div>
-      <div class="vc-sketch-field--single">
-        <ed-in label="b" :value="colors.rgba.b" @change="inputChange"></ed-in>
-      </div>
-      <div class="vc-sketch-field--single" v-if="!disableAlpha">
-        <ed-in label="a" :value="colors.a" :arrow-offset="0.01" :max="1" @change="inputChange"></ed-in>
-      </div>
-    </div>
-    <div class="vc-sketch-presets" role="group" aria-label="A color preset, pick one to set as current color">
-      <template v-for="c in presetColors">
-        <div
-          :key="`!${c}`"
-          v-if="!isTransparent(c)"
-          class="vc-sketch-presets-color"
-          :aria-label="'Color:' + c"
-          :style="{background: c}"
-          @click="handlePreset(c)">
-        </div>
-        <div
-          v-else
-          :key="c"
-          :aria-label="'Color:' + c"
-          class="vc-sketch-presets-color"
-          @click="handlePreset(c)">
-          <checkboard />
-        </div>
-      </template>
-    </div>
-  </div>
-</template>
-
 <script>
 import colorMixin from '@/mixin/color';
 import editableInput from '@/components/editable-input';
@@ -75,14 +15,14 @@ const presetColors = [
 
 export default {
   name: 'Sketch',
-  mixins: [colorMixin],
   components: {
-    saturation,
-    hue,
-    alpha,
-    'ed-in': editableInput,
-    checkboard,
+    Saturation: saturation,
+    Hue: hue,
+    Alpha: alpha,
+    EdIn: editableInput,
+    Checkboard: checkboard,
   },
+  mixins: [colorMixin],
   props: {
     presetColors: {
       type: Array,
@@ -102,11 +42,11 @@ export default {
   computed: {
     hex() {
       let hex;
-      if (this.colors.a < 1) {
+      if (this.colors.a < 1)
         hex = this.colors.hex8;
-      } else {
+      else
         hex = this.colors.hex;
-      }
+
       return hex.replace('#', '');
     },
     activeColor() {
@@ -122,15 +62,16 @@ export default {
       this.colorChange(data);
     },
     inputChange(data) {
-      if (!data) {
+      if (!data)
         return;
-      }
+
       if (data.hex) {
         this.isValidHex(data.hex) && this.colorChange({
           hex: data.hex,
           source: 'hex',
         });
-      } else if (data.r || data.g || data.b || data.a) {
+      }
+      else if (data.r || data.g || data.b || data.a) {
         this.colorChange({
           r: data.r || this.colors.rgba.r,
           g: data.g || this.colors.rgba.g,
@@ -143,6 +84,67 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div role="application" aria-label="Sketch color picker" class="vc-sketch" :class="[disableAlpha ? 'vc-sketch__disable-alpha' : '']">
+    <div class="vc-sketch-saturation-wrap">
+      <Saturation :value="colors" @change="childChange" />
+    </div>
+    <div class="vc-sketch-controls">
+      <div class="vc-sketch-sliders">
+        <div class="vc-sketch-hue-wrap">
+          <Hue :value="colors" @change="childChange" />
+        </div>
+        <div v-if="!disableAlpha" class="vc-sketch-alpha-wrap">
+          <Alpha :value="colors" @change="childChange" />
+        </div>
+      </div>
+      <div class="vc-sketch-color-wrap">
+        <div :aria-label="`Current color is ${activeColor}`" class="vc-sketch-active-color" :style="{ background: activeColor }" />
+        <Checkboard />
+      </div>
+    </div>
+    <div v-if="!disableFields" class="vc-sketch-field">
+      <!-- rgba -->
+      <div class="vc-sketch-field--double">
+        <EdIn label="hex" :value="hex" @change="inputChange" />
+      </div>
+      <div class="vc-sketch-field--single">
+        <EdIn label="r" :value="colors.rgba.r" @change="inputChange" />
+      </div>
+      <div class="vc-sketch-field--single">
+        <EdIn label="g" :value="colors.rgba.g" @change="inputChange" />
+      </div>
+      <div class="vc-sketch-field--single">
+        <EdIn label="b" :value="colors.rgba.b" @change="inputChange" />
+      </div>
+      <div v-if="!disableAlpha" class="vc-sketch-field--single">
+        <EdIn label="a" :value="colors.a" :arrow-offset="0.01" :max="1" @change="inputChange" />
+      </div>
+    </div>
+    <div class="vc-sketch-presets" role="group" aria-label="A color preset, pick one to set as current color">
+      <template v-for="c in presetColors">
+        <div
+          v-if="!isTransparent(c)"
+          :key="`!${c}`"
+          class="vc-sketch-presets-color"
+          :aria-label="`Color:${c}`"
+          :style="{ background: c }"
+          @click="handlePreset(c)"
+        />
+        <div
+          v-else
+          :key="c"
+          :aria-label="`Color:${c}`"
+          class="vc-sketch-presets-color"
+          @click="handlePreset(c)"
+        >
+          <Checkboard />
+        </div>
+      </template>
+    </div>
+  </div>
+</template>
 
 <style>
 .vc-sketch {

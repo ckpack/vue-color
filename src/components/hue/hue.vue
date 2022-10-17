@@ -1,21 +1,3 @@
-<template>
-  <div :class="['vc-hue', directionClass]">
-    <div class="vc-hue-container"
-      role="slider"
-      :aria-valuenow="colors.hsl.h"
-      aria-valuemin="0"
-      aria-valuemax="360"
-      ref="container"
-      @mousedown="handleMouseDown"
-      @touchmove="handleChange"
-      @touchstart="handleChange">
-      <div class="vc-hue-pointer" :style="{top: pointerTop, left: pointerLeft}" role="presentation">
-        <div class="vc-hue-picker"></div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script>
 export default {
   name: 'Hue',
@@ -35,11 +17,6 @@ export default {
   },
   computed: {
     colors() {
-      const { h } = this.value.hsl;
-      if (h !== 0 && h - this.oldHue > 0) this.pullDirection = 'right';
-      if (h !== 0 && h - this.oldHue < 0) this.pullDirection = 'left';
-      this.oldHue = h;
-
       return this.value;
     },
     directionClass() {
@@ -50,17 +27,33 @@ export default {
     },
     pointerTop() {
       if (this.direction === 'vertical') {
-        if (this.colors.hsl.h === 0 && this.pullDirection === 'right') return 0;
+        if (this.colors.hsl.h === 0 && this.pullDirection === 'right')
+          return 0;
         return `${-((this.colors.hsl.h * 100) / 360) + 100}%`;
       }
       return 0;
     },
     pointerLeft() {
-      if (this.direction === 'vertical') {
+      if (this.direction === 'vertical')
         return 0;
-      }
-      if (this.colors.hsl.h === 0 && this.pullDirection === 'right') return '100%';
+
+      if (this.colors.hsl.h === 0 && this.pullDirection === 'right')
+        return '100%';
       return `${(this.colors.hsl.h * 100) / 360}%`;
+    },
+  },
+  watch: {
+    value: {
+      handler(value, oldVal) {
+        const { h } = value.hsl;
+        if (h !== 0 && h - this.oldHue > 0)
+          this.pullDirection = 'right';
+        if (h !== 0 && h - this.oldHue < 0)
+          this.pullDirection = 'left';
+        this.oldHue = h;
+      },
+      deep: true,
+      immediate: true,
     },
   },
   methods: {
@@ -88,9 +81,11 @@ export default {
       if (this.direction === 'vertical') {
         if (top < 0) {
           h = 360;
-        } else if (top > containerHeight) {
+        }
+        else if (top > containerHeight) {
           h = 0;
-        } else {
+        }
+        else {
           percent = -(top * 100 / containerHeight) + 100;
           h = (360 * percent / 100);
         }
@@ -104,12 +99,15 @@ export default {
             source: 'hsl',
           });
         }
-      } else {
+      }
+      else {
         if (left < 0) {
           h = 0;
-        } else if (left > containerWidth) {
+        }
+        else if (left > containerWidth) {
           h = 360;
-        } else {
+        }
+        else {
           percent = left * 100 / containerWidth;
           h = (360 * percent / 100);
         }
@@ -142,6 +140,26 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div class="vc-hue" :class="[directionClass]">
+    <div
+      ref="container"
+      class="vc-hue-container"
+      role="slider"
+      :aria-valuenow="colors.hsl.h"
+      aria-valuemin="0"
+      aria-valuemax="360"
+      @mousedown="handleMouseDown"
+      @touchmove="handleChange"
+      @touchstart="handleChange"
+    >
+      <div class="vc-hue-pointer" :style="{ top: pointerTop, left: pointerLeft }" role="presentation">
+        <div class="vc-hue-picker" />
+      </div>
+    </div>
+  </div>
+</template>
 
 <style>
 .vc-hue {

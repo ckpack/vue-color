@@ -1,36 +1,3 @@
-<template>
-  <div class="vc-twitter"
-    :class="{
-      'vc-twitter-hide-triangle ': triangle === 'hide',
-      'vc-twitter-top-left-triangle ': triangle === 'top-left',
-      'vc-twitter-top-right-triangle ': triangle === 'top-right',
-    }"
-    :style="{
-      width: typeof width === 'number' ? `${width}px` : width
-    }"
-  >
-    <div class="vc-twitter-triangle-shadow"></div>
-    <div class="vc-twitter-triangle"></div>
-
-    <div class="vc-twitter-body">
-      <span
-        class="vc-twitter-swatch"
-        :style="{
-          background: color,
-          boxShadow: `0 0 4px ${ equal(color) ? color : 'transparent' }`,
-        }"
-        v-for="(color, index) in defaultColors"
-        :key="index"
-        @click="handlerClick(color)"
-      >
-      </span>
-      <div class="vc-twitter-hash">#</div>
-      <editable-input label="#" :value="hex" @change="inputChange"></editable-input>
-      <div class="vc-twitter-clear"></div>
-    </div>
-  </div>
-</template>
-
 <script>
 import editableInput from '@/components/editable-input';
 import colorMixin from '@/mixin/color';
@@ -42,10 +9,10 @@ const defaultColors = [
 
 export default {
   name: 'Twitter',
-  mixins: [colorMixin],
   components: {
-    editableInput,
+    EditableInput: editableInput,
   },
+  mixins: [colorMixin],
   props: {
     width: {
       type: [String, Number],
@@ -89,15 +56,16 @@ export default {
       });
     },
     inputChange(data) {
-      if (!data) {
+      if (!data)
         return;
-      }
+
       if (data['#']) {
         this.isValidHex(data['#']) && this.colorChange({
           hex: data['#'],
           source: 'hex',
         });
-      } else if (data.r || data.g || data.b || data.a) {
+      }
+      else if (data.r || data.g || data.b || data.a) {
         this.colorChange({
           r: data.r || this.colors.rgba.r,
           g: data.g || this.colors.rgba.g,
@@ -105,7 +73,8 @@ export default {
           a: data.a || this.colors.rgba.a,
           source: 'rgba',
         });
-      } else if (data.h || data.s || data.v) {
+      }
+      else if (data.h || data.s || data.v) {
         this.colorChange({
           h: data.h || this.colors.hsv.h,
           s: (data.s / 100) || this.colors.hsv.s,
@@ -117,6 +86,41 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div
+    class="vc-twitter"
+    :class="{
+      'vc-twitter-hide-triangle ': triangle === 'hide',
+      'vc-twitter-top-left-triangle ': triangle === 'top-left',
+      'vc-twitter-top-right-triangle ': triangle === 'top-right',
+    }"
+    :style="{
+      width: typeof width === 'number' ? `${width}px` : width,
+    }"
+  >
+    <div class="vc-twitter-triangle-shadow" />
+    <div class="vc-twitter-triangle" />
+
+    <div class="vc-twitter-body">
+      <span
+        v-for="(color, index) in defaultColors"
+        :key="index"
+        class="vc-twitter-swatch"
+        :style="{
+          background: color,
+          boxShadow: `0 0 4px ${equal(color) ? color : 'transparent'}`,
+        }"
+        @click="handlerClick(color)"
+      />
+      <div class="vc-twitter-hash">
+        #
+      </div>
+      <EditableInput label="#" :value="hex" @change="inputChange" />
+      <div class="vc-twitter-clear" />
+    </div>
+  </div>
+</template>
 
 <style>
 .vc-twitter {

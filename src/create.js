@@ -3,7 +3,7 @@ import { prefix, size } from '@/defaultConfig';
 function create(params = {}) {
   return (app) => {
     const { components, componentPrefix = prefix, componentSize = size } = params;
-    // eslint-disable-next-line no-param-reassign
+
     app.config.globalProperties.$VUI = {
       size: componentSize,
       prefix: componentPrefix,

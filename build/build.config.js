@@ -9,9 +9,10 @@ import commonjs from '@rollup/plugin-commonjs';
 
 import prefixer from 'postcss-prefixer';
 
-import { name, cssPrefix } from '../src/defaultConfig';
-import { dependencies } from '../package.json';
+import { cssPrefix, name } from '../src/defaultConfig.js';
+import packageJson from '../package.json' assert { type: 'json' };
 
+const { dependencies } = packageJson;
 const projectRoot = path.resolve(__dirname, '../src');
 const globals = {
   // Provide global variable names to replace your external imports, eg. jquery: '$'

@@ -1,46 +1,25 @@
-<template>
-  <div role="application" aria-label="Material color picker" class="vc-material">
-    <ed-in class="vc-material-hex" label="hex" :value="colors.hex"
-      :style="{ borderColor: colors.hex }" @change="onChange"></ed-in>
-
-    <div class="vc-material-split">
-      <div class="vc-material-third">
-        <ed-in label="r" :value="colors.rgba.r"
-        @change="onChange"></ed-in>
-      </div>
-      <div class="vc-material-third">
-        <ed-in label="g" :value="colors.rgba.g"
-        @change="onChange"></ed-in>
-      </div>
-      <div class="vc-material-third">
-        <ed-in label="b" :value="colors.rgba.b"
-        @change="onChange"></ed-in>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script>
 import editableInput from '@/components/editable-input';
 import colorMixin from '@/mixin/color';
 
 export default {
   name: 'Material',
-  mixins: [colorMixin],
   components: {
-    'ed-in': editableInput,
+    EdIn: editableInput,
   },
+  mixins: [colorMixin],
   methods: {
     onChange(data) {
-      if (!data) {
+      if (!data)
         return;
-      }
+
       if (data.hex) {
         this.isValidHex(data.hex) && this.colorChange({
           hex: data.hex,
           source: 'hex',
         });
-      } else if (data.r || data.g || data.b) {
+      }
+      else if (data.r || data.g || data.b) {
         this.colorChange({
           r: data.r || this.colors.rgba.r,
           g: data.g || this.colors.rgba.g,
@@ -53,6 +32,42 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div role="application" aria-label="Material color picker" class="vc-material">
+    <EdIn
+      class="vc-material-hex"
+      label="hex"
+      :value="colors.hex"
+      :style="{ borderColor: colors.hex }"
+      @change="onChange"
+    />
+
+    <div class="vc-material-split">
+      <div class="vc-material-third">
+        <EdIn
+          label="r"
+          :value="colors.rgba.r"
+          @change="onChange"
+        />
+      </div>
+      <div class="vc-material-third">
+        <EdIn
+          label="g"
+          :value="colors.rgba.g"
+          @change="onChange"
+        />
+      </div>
+      <div class="vc-material-third">
+        <EdIn
+          label="b"
+          :value="colors.rgba.b"
+          @change="onChange"
+        />
+      </div>
+    </div>
+  </div>
+</template>
 
 <style>
 .vc-material {

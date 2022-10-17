@@ -1,26 +1,3 @@
-<template>
-  <div role="application" aria-label="Swatches color picker" class="vc-swatches" :data-pick="pick">
-    <div class="vc-swatches-box" role="listbox">
-      <div class="vc-swatches-color-group" v-for="(group, $idx) in palette" :key="$idx">
-        <div :class="['vc-swatches-color-it', {'vc-swatches-color--white': c === '#FFFFFF' }]"
-          role="option"
-          :aria-label="'Color:' + c"
-          :aria-selected="equal(c)"
-          v-for="c in group" :key="c"
-          :data-color="c"
-          :style="{background: c}"
-          @click="handlerClick(c)">
-          <div class="vc-swatches-pick" v-show="equal(c)">
-            <svg style="width: 24px; height:24px;" viewBox="0 0 24 24">
-              <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script>
 import material from 'material-colors';
 import colorMixin from '@/mixin/color';
@@ -39,7 +16,8 @@ const defaultColors = (() => {
     let typeColor = [];
     if (type.toLowerCase() === 'black' || type.toLowerCase() === 'white') {
       typeColor = typeColor.concat(['#000000', '#FFFFFF']);
-    } else {
+    }
+    else {
       colorLevel.forEach((level) => {
         const color = material[type][level];
         typeColor.push(color.toUpperCase());
@@ -80,6 +58,32 @@ export default {
 
 };
 </script>
+
+<template>
+  <div role="application" aria-label="Swatches color picker" class="vc-swatches" :data-pick="pick">
+    <div class="vc-swatches-box" role="listbox">
+      <div v-for="(group, $idx) in palette" :key="$idx" class="vc-swatches-color-group">
+        <div
+          v-for="c in group" :key="c"
+          class="vc-swatches-color-it"
+          :class="[{ 'vc-swatches-color--white': c === '#FFFFFF' }]"
+          role="option"
+          :aria-label="`Color:${c}`"
+          :aria-selected="equal(c)"
+          :data-color="c"
+          :style="{ background: c }"
+          @click="handlerClick(c)"
+        >
+          <div v-show="equal(c)" class="vc-swatches-pick">
+            <svg style="width: 24px; height:24px;" viewBox="0 0 24 24">
+              <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style>
 .vc-swatches {

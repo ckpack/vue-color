@@ -1,23 +1,3 @@
-<template>
-  <div role="application" aria-label="Slider color picker" class="vc-slider">
-    <div class="vc-slider-hue-warp">
-      <hue :value="colors" @change="hueChange"></hue>
-    </div>
-    <div class="vc-slider-swatches" role="group">
-      <div class="vc-slider-swatch" v-for="(swatch, index) in normalizedSwatches" :key="index" :data-index="index"
-        :aria-label="'color:' + colors.hex"
-        role="button"
-        @click="handleSwClick(index, swatch)">
-        <div
-          class="vc-slider-swatch-picker"
-          :class="{'vc-slider-swatch-picker--active': isActive(swatch, index), 'vc-slider-swatch-picker--white': swatch.l === 1}"
-          :style="{background: 'hsl(' + colors.hsl.h + ', ' + swatch.s * 100 + '%, ' + swatch.l * 100 + '%)'}"
-        ></div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script>
 import colorMixin from '@/mixin/color';
 import hue from '@/components/hue';
@@ -26,6 +6,9 @@ const DEFAULT_SATURATION = 0.5;
 
 export default {
   name: 'Slider',
+  components: {
+    Hue: hue,
+  },
   mixins: [colorMixin],
   props: {
     swatches: {
@@ -41,9 +24,6 @@ export default {
         ];
       },
     },
-  },
-  components: {
-    hue,
   },
   computed: {
     normalizedSwatches() {
@@ -63,12 +43,12 @@ export default {
   methods: {
     isActive(swatch, index) {
       const { hsl } = this.colors;
-      if (hsl.l === 1 && swatch.l === 1) {
+      if (hsl.l === 1 && swatch.l === 1)
         return true;
-      }
-      if (hsl.l === 0 && swatch.l === 0) {
+
+      if (hsl.l === 0 && swatch.l === 0)
         return true;
-      }
+
       return (
         Math.abs(hsl.l - swatch.l) < 0.01 && Math.abs(hsl.s - swatch.s) < 0.01
       );
@@ -87,6 +67,31 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div role="application" aria-label="Slider color picker" class="vc-slider">
+    <div class="vc-slider-hue-warp">
+      <Hue :value="colors" @change="hueChange" />
+    </div>
+    <div class="vc-slider-swatches" role="group">
+      <div
+        v-for="(swatch, index) in normalizedSwatches"
+        :key="index"
+        class="vc-slider-swatch"
+        :data-index="index"
+        :aria-label="`color:${colors.hex}`"
+        role="button"
+        @click="handleSwClick(index, swatch)"
+      >
+        <div
+          class="vc-slider-swatch-picker"
+          :class="{ 'vc-slider-swatch-picker--active': isActive(swatch, index), 'vc-slider-swatch-picker--white': swatch.l === 1 }"
+          :style="{ background: `hsl(${colors.hsl.h}, ${swatch.s * 100}%, ${swatch.l * 100}%)` }"
+        />
+      </div>
+    </div>
+  </div>
+</template>
 
 <style>
 .vc-slider {

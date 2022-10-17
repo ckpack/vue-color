@@ -9,30 +9,27 @@ function _colorChange(data, oldHue) {
   let color;
 
   // hsl is better than hex between conversions
-  if (data && data.hsl) {
+  if (data && data.hsl)
     color = tinycolor(data.hsl);
-  } else if (data && data.hex && data.hex.length > 0) {
+  else if (data && data.hex && data.hex.length > 0)
     color = tinycolor(data.hex);
-  } else if (data && data.hsv) {
+  else if (data && data.hsv)
     color = tinycolor(data.hsv);
-  } else if (data && data.rgba) {
+  else if (data && data.rgba)
     color = tinycolor(data.rgba);
-  } else if (data && data.rgb) {
+  else if (data && data.rgb)
     color = tinycolor(data.rgb);
-  } else {
+  else
     color = tinycolor(data);
-  }
 
-  if (color && (color._a === undefined || color._a === null)) {
+  if (color && (color._a === undefined || color._a === null))
     color.setAlpha(alpha || color.getAlpha());
-  }
 
   const hsl = color.toHsl();
   const hsv = color.toHsv();
 
-  if (hsl.s === 0) {
+  if (hsl.s === 0)
     hsv.h = hsl.h = data.h || (data.hsl && data.hsl.h) || oldHue || 0;
-  }
 
   /* --- comment this block to fix #109, may cause #25 again --- */
   // when the hsv.v is less than 0.0164 (base on test)
@@ -105,18 +102,16 @@ export default {
         const letter = keysToCheck[i];
         if (data[letter]) {
           checked++;
-          if (!isNaN(data[letter])) {
+          if (!isNaN(data[letter]))
             passed++;
-          }
         }
       }
 
-      if (checked === passed) {
+      if (checked === passed)
         return data;
-      }
     },
     paletteUpperCase(palette) {
-      return palette.map((c) => c.toUpperCase());
+      return palette.map(c => c.toUpperCase());
     },
     isTransparent(color) {
       return tinycolor(color).getAlpha() === 0;

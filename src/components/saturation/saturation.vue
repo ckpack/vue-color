@@ -1,20 +1,5 @@
-<template>
-  <div class="vc-saturation"
-    :style="{background: bgColor}"
-    ref="container"
-    @mousedown="handleMouseDown"
-    @touchmove="handleChange"
-    @touchstart="handleChange">
-    <div class="vc-saturation--white"></div>
-    <div class="vc-saturation--black"></div>
-    <div class="vc-saturation-pointer" :style="{top: pointerTop, left: pointerLeft}">
-      <div class="vc-saturation-circle"></div>
-    </div>
-  </div>
-</template>
-
 <script>
-import { clamp, throttle } from '@/utils/utils';
+import { clamp } from '@/utils/utils';
 
 export default {
   name: 'Saturation',
@@ -36,13 +21,6 @@ export default {
     },
   },
   methods: {
-    throttle: throttle((fn, data) => {
-      fn(data);
-    }, 20,
-    {
-      leading: true,
-      trailing: false,
-    }),
     handleChange(e, skip) {
       !skip && e.preventDefault();
       const { container } = this.$refs;
@@ -62,7 +40,7 @@ export default {
       const saturation = left / containerWidth;
       const bright = clamp(-(top / containerHeight) + 1, 0, 1);
 
-      this.throttle(this.onChange, {
+      this.onChange({
         h: this.colors.hsv.h,
         s: saturation,
         v: bright,
@@ -90,6 +68,23 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div
+    ref="container"
+    class="vc-saturation"
+    :style="{ background: bgColor }"
+    @mousedown="handleMouseDown"
+    @touchmove="handleChange"
+    @touchstart="handleChange"
+  >
+    <div class="vc-saturation--white" />
+    <div class="vc-saturation--black" />
+    <div class="vc-saturation-pointer" :style="{ top: pointerTop, left: pointerLeft }">
+      <div class="vc-saturation-circle" />
+    </div>
+  </div>
+</template>
 
 <style>
 .vc-saturation,

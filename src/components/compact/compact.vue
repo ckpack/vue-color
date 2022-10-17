@@ -1,23 +1,3 @@
-<template>
-  <div role="application" aria-label="Compact color picker" class="vc-compact">
-    <ul class="vc-compact-colors" role="listbox">
-      <li
-        v-for="c in paletteUpperCase(palette)"
-        role="option"
-        :aria-label="'color:' + c"
-        :aria-selected="c === pick"
-        class="vc-compact-color-item"
-        :key="c"
-        :class="{'vc-compact-color-item--white': c === '#FFFFFF' }"
-        :style="{background: c}"
-        @click="handlerClick(c)"
-      >
-        <div class="vc-compact-dot" v-show="c === pick"></div>
-      </li>
-    </ul>
-  </div>
-</template>
-
 <script>
 import colorMixin from '@/mixin/color';
 
@@ -55,8 +35,27 @@ export default {
     },
   },
 };
-
 </script>
+
+<template>
+  <div role="application" aria-label="Compact color picker" class="vc-compact">
+    <ul class="vc-compact-colors" role="listbox">
+      <li
+        v-for="c in paletteUpperCase(palette)"
+        :key="c"
+        role="option"
+        :aria-label="`color:${c}`"
+        :aria-selected="c === pick"
+        class="vc-compact-color-item"
+        :class="{ 'vc-compact-color-item--white': c === '#FFFFFF' }"
+        :style="{ background: c }"
+        @click="handlerClick(c)"
+      >
+        <div v-show="c === pick" class="vc-compact-dot" />
+      </li>
+    </ul>
+  </div>
+</template>
 
 <style>
 .vc-compact {

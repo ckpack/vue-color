@@ -1,6 +1,6 @@
 import {
-  projectRoot, plugins, output, external,
-} from './build.config';
+  external, output, plugins, projectRoot,
+} from './build.config.js';
 
 const input = `${projectRoot}/index.js`;
 

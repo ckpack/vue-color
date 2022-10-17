@@ -1,31 +1,14 @@
-<template>
-  <div class="vc-alpha">
-    <div class="vc-alpha-checkboard-wrap">
-      <checkboard></checkboard>
-    </div>
-    <div class="vc-alpha-gradient" :style="{background: gradientColor}"></div>
-    <div class="vc-alpha-container" ref="container"
-        @mousedown="handleMouseDown"
-        @touchmove="handleChange"
-        @touchstart="handleChange">
-      <div class="vc-alpha-pointer" :style="{left: colors.a * 100 + '%'}">
-        <div class="vc-alpha-picker"></div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script>
 import checkboard from '@/components/checkboard';
 
 export default {
   name: 'Alpha',
+  components: {
+    Checkboard: checkboard,
+  },
   props: {
     value: Object,
     onChange: Function,
-  },
-  components: {
-    checkboard,
   },
   computed: {
     colors() {
@@ -52,13 +35,12 @@ export default {
       const left = pageX - xOffset;
 
       let a;
-      if (left < 0) {
+      if (left < 0)
         a = 0;
-      } else if (left > containerWidth) {
+      else if (left > containerWidth)
         a = 1;
-      } else {
+      else
         a = Math.round(left * 100 / containerWidth) / 100;
-      }
 
       if (this.colors.a !== a) {
         this.$emit('change', {
@@ -84,8 +66,27 @@ export default {
     },
   },
 };
-
 </script>
+
+<template>
+  <div class="vc-alpha">
+    <div class="vc-alpha-checkboard-wrap">
+      <Checkboard />
+    </div>
+    <div class="vc-alpha-gradient" :style="{ background: gradientColor }" />
+    <div
+      ref="container"
+      class="vc-alpha-container"
+      @mousedown="handleMouseDown"
+      @touchmove="handleChange"
+      @touchstart="handleChange"
+    >
+      <div class="vc-alpha-pointer" :style="{ left: `${colors.a * 100}%` }">
+        <div class="vc-alpha-picker" />
+      </div>
+    </div>
+  </div>
+</template>
 
 <style>
 .vc-alpha {

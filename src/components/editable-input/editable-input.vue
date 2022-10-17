@@ -1,21 +1,6 @@
-<template>
-  <div class="vc-editable-input">
-    <input
-      :aria-labelledby="labelId"
-      class="vc-input__input"
-      v-model="val"
-      @keydown="handleKeyDown"
-      @input="update"
-      ref="input"
-    >
-    <span :for="label" class="vc-input__label" :id="labelId">{{labelSpanText}}</span>
-    <span class="vc-input__desc">{{desc}}</span>
-  </div>
-</template>
-
 <script>
 export default {
-  name: 'editableInput',
+  name: 'EditableInput',
   props: {
     label: String,
     labelText: String,
@@ -35,11 +20,10 @@ export default {
       },
       set(v) {
         // TODO: min
-        if (!(this.max === undefined) && +v > this.max) {
+        if (!(this.max === undefined) && +v > this.max)
           this.$refs.input.value = this.max;
-        } else {
+        else
           return v;
-        }
       },
     },
     labelId() {
@@ -56,11 +40,10 @@ export default {
     handleChange(newVal) {
       const data = {};
       data[this.label] = newVal;
-      if (data.hex === undefined && data['#'] === undefined) {
+      if (data.hex === undefined && data['#'] === undefined)
         this.$emit('change', data);
-      } else if (newVal.length > 5) {
+      else if (newVal.length > 5)
         this.$emit('change', data);
-      }
     },
     // **** unused
     // handleBlur (e) {
@@ -98,6 +81,21 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div class="vc-editable-input">
+    <input
+      ref="input"
+      v-model="val"
+      :aria-labelledby="labelId"
+      class="vc-input__input"
+      @keydown="handleKeyDown"
+      @input="update"
+    >
+    <span :id="labelId" :for="label" class="vc-input__label">{{ labelSpanText }}</span>
+    <span class="vc-input__desc">{{ desc }}</span>
+  </div>
+</template>
 
 <style>
 .vc-editable-input {
