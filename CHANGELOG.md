@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/ckpack/vue-color/compare/v1.2.1...v1.2.2) (2022-10-17)
+
+
+### Bug Fixes
+
+* upgrade node version ([2ecf716](https://github.com/ckpack/vue-color/commit/2ecf716ea1995c4af524bb7df7149464dfb20875))
+
 ### [1.2.1](https://github.com/ckpack/vue-color/compare/v1.2.0...v1.2.1) (2022-10-17)
 
 ## [1.2.0](https://github.com/ckpack/vue-color/compare/v1.1.9...v1.2.0) (2022-07-11)
