@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.3](https://github.com/ckpack/vue-color/compare/v1.2.2...v1.2.3) (2022-10-17)
+
+
+### Bug Fixes
+
+* change yarn to npm ([2ef2928](https://github.com/ckpack/vue-color/commit/2ef292831439c407de8d2218a0df0c6f3c74dd23))
+
 ### [1.2.2](https://github.com/ckpack/vue-color/compare/v1.2.1...v1.2.2) (2022-10-17)
 
 
