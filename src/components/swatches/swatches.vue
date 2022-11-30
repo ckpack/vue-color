@@ -72,6 +72,8 @@ export default {
           :aria-selected="equal(c)"
           :data-color="c"
           :style="{ background: c }"
+          tabindex="0"
+          @keyup.enter="handlerClick(c)"
           @click="handlerClick(c)"
         >
           <div v-show="equal(c)" class="vc-swatches-pick">
