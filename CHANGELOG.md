@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/ckpack/vue-color/compare/v1.2.4...v1.3.0) (2022-11-30)
+
+
+### Features
+
+* add keyboard navigation support for swatches and twitter ([a0ff7aa](https://github.com/ckpack/vue-color/commit/a0ff7aa7cc0afe450e01416250cd61d512093dd2))
+
 ### [1.2.4](https://github.com/ckpack/vue-color/compare/v1.2.3...v1.2.4) (2022-10-17)
 
 
