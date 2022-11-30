@@ -111,6 +111,9 @@ export default {
           background: color,
           boxShadow: `0 0 4px ${equal(color) ? color : 'transparent'}`,
         }"
+        role="button"
+        tabindex="0"
+        @keyup.enter="handlerClick(color)"
         @click="handlerClick(color)"
       />
       <div class="vc-twitter-hash">
@@ -188,7 +191,6 @@ border-radius: 4px;
 margin: 0 6px 6px 0;
 cursor: pointer;
 position: relative;
-outline: none;
 }
 .vc-twitter-clear {
 clear: both;
