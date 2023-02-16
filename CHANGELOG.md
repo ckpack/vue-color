@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/ckpack/vue-color/compare/v1.4.0...v1.4.1) (2023-02-16)
+
+
+### Bug Fixes
+
+* update package.json ([aec3072](https://github.com/ckpack/vue-color/commit/aec30723de33d9366f3c1d1cd6cc18a18eb44b0b))
+
 ## [1.4.0](https://github.com/ckpack/vue-color/compare/v1.3.0...v1.4.0) (2023-02-16)
 
 
