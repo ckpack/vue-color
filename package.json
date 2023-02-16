@@ -5,6 +5,7 @@
   "repository": "https://github.com/ckpack/vue-color",
   "sideEffects": false,
   "type": "module",
+  "types": "./types.d.ts",
   "main": "dist/index.js",
   "module": "libs/index.js",
   "unpkg": "dist/index.min.js",
