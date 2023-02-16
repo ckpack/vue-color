@@ -18,7 +18,8 @@
   "files": [
     "dist/*",
     "src/*",
-    "libs/*"
+    "libs/*",
+    "types.d.ts"
   ],
   "scripts": {
     "dev": "vue-cli-service serve dev/serve.js",
