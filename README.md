@@ -20,19 +20,11 @@ We can import components we actually need, making the project smaller than other
 <template>
   <Sketch v-model="colors"/>
 </template>
-<script>
+<script setup>
+import { ref } from 'vue';
 import { Sketch } from '@ckpack/vue-color';
 
-export default {
-  components: {
-    Sketch,
-  },
-  setup() {
-    return {
-      colors: '#194D33A8' // etc: { h: 150, s: 0.66, v: 0.30 }, { r: 255, g: 0, b: 0 }, '#194d33'
-    }
-  }
-}
+const colors = ref('#194D33A8'); // etc: { h: 150, s: 0.66, v: 0.30 }, { r: 255, g: 0, b: 0 }, '#194d33' 
 </script>
 ```
 

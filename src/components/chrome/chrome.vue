@@ -25,10 +25,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    format: {
+      type: String,
+      default: 'hex',
+    },
   },
   data() {
     return {
-      fieldsIndex: 0,
+      fieldsIndex: 'hex',
       highlight: false,
     };
   },
@@ -47,6 +51,14 @@ export default {
     },
     hasAlpha() {
       return this.colors.a < 1;
+    },
+  },
+  watch: {
+    format: {
+      handler(val) {
+        this.fieldsIndex = val;
+      },
+      immediate: true,
     },
   },
   methods: {
@@ -85,11 +97,19 @@ export default {
       }
     },
     toggleViews() {
-      if (this.fieldsIndex >= 2) {
-        this.fieldsIndex = 0;
-        return;
+      switch (this.fieldsIndex) {
+        case 'hex':
+          this.fieldsIndex = `rgb${this.disableAlpha ? '' : 'a'}`;
+          break;
+        case 'rgb':
+        case 'rgba':
+          this.fieldsIndex = `hsl${this.disableAlpha ? '' : 'a'}`;
+          break;
+        default:
+          this.fieldsIndex = 'hex';
+          break;
       }
-      this.fieldsIndex++;
+      this.$emit('update:format', this.fieldsIndex);
     },
     showHighlight() {
       this.highlight = true;
@@ -124,14 +144,14 @@ export default {
       </div>
 
       <div v-if="!disableFields" class="vc-chrome-fields-wrap">
-        <div v-show="fieldsIndex === 0" class="vc-chrome-fields">
+        <div v-show="fieldsIndex === 'hex'" class="vc-chrome-fields">
           <!-- hex -->
           <div class="vc-chrome-field">
             <EdIn v-if="!hasAlpha" label="hex" :value="colors.hex" @change="inputChange" />
             <EdIn v-if="hasAlpha" label="hex" :value="colors.hex8" @change="inputChange" />
           </div>
         </div>
-        <div v-show="fieldsIndex === 1" class="vc-chrome-fields">
+        <div v-show="['rgb', 'rgba'].includes(fieldsIndex)" class="vc-chrome-fields">
           <!-- rgba -->
           <div class="vc-chrome-field">
             <EdIn label="r" :value="colors.rgba.r" @change="inputChange" />
@@ -146,7 +166,7 @@ export default {
             <EdIn label="a" :value="colors.a" :arrow-offset="0.01" :max="1" @change="inputChange" />
           </div>
         </div>
-        <div v-show="fieldsIndex === 2" class="vc-chrome-fields">
+        <div v-show="['hsl', 'hsla'].includes(fieldsIndex)" class="vc-chrome-fields">
           <!-- hsla -->
           <div class="vc-chrome-field">
             <EdIn label="h" :value="hsl.h" @change="inputChange" />
