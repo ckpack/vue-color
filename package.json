@@ -10,6 +10,7 @@
   "module": "libs/index.js",
   "unpkg": "dist/index.min.js",
   "author": "chenkai",
+  "license": "MIT",
   "keywords": [
     "vue-color",
     "color",
