@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/ckpack/vue-color/compare/v1.5.2...v1.6.0) (2024-07-19)
+
+
+### Features
+
+* exported ColorMixin ([dbbe373](https://github.com/ckpack/vue-color/commit/dbbe373cfcc901f5e9a72cae2f6758bcc16dad53))
+
 ### [1.5.2](https://github.com/ckpack/vue-color/compare/v1.5.0...v1.5.2) (2024-07-18)
 
 ### [1.5.1](https://github.com/ckpack/vue-color/compare/v1.5.0...v1.5.1) (2024-07-18)
